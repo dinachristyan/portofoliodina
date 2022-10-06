@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Data Siswa</title>
+</head>
+<body>
+    <form name="fform">
+        <table align="center">
+            <h2 align="center">Data Siswa <br>SMK Brantas Karangkates</h2>
+        <hr>
+        <tr>
+            <td>NIS</td>
+            <td>: <input type="text" size="25" name="nis" placeholder="Nomor Induk Siswa" rows="1" cols="30"></td>
+        </tr>
+        <tr>
+            <td>Nama Siswa</td>
+            <td>: <input type="text" size="25" name="nama" placeholder="Nama Lengkap Siswa" rows="1" cols="30"></td>
+        </tr>
+        <tr>
+            <td>Jenis Kelamin</td>
+            <td>: <select name="jkelamin">
+                <option value="1">Laki-laki</option>
+                <option value="2">Perempuan</option></select></td>
+        </tr>
+        <tr>
+            <td>Agama</td>
+            <td>: <select name="agama">
+                <option value="1">Islam</option>
+                <option value="2">Kristen</option>
+                <option value="3">Katolik</option>
+                <option value="4">Budha</option>
+                <option value="5">Hindu</option></select></td>
+        </tr>
+        <tr>
+            <td>Status</td>
+            <td>: <input type="radio" value="menikah" name="menikah">Menikah</td>
+        </tr>
+        <tr>
+            <td>Jurusan</td>
+            <td>: <select name="jurusan">
+               <option value="1">Rekayasa Perangkat Lunak</option>
+               <option value="2">Multimedia</option>
+               <option value="3">Perekayasaan Perangkat Lunak dan Gim</option>
+               <option value="4">Desain Komunikasi Visual</option></select></td>
+        </tr>
+        <tr>
+            <td>Keterangan  :</td>
+            <td><textarea name="ket" placeholder="Keterangan" rows="6" cols="30"></textarea></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="button" value="kirim" onclick="tekan()"><input type="reset" value="ulang"></td>
+        </tr>
+        </table>
+        <table align="center">
+            <h2 align="center">Hasil</h2>
+            <hr>
+            <tr>
+                <td>NIS</td>
+                <td>:<input type="text" size="25" name="onis" placeholder="Nomor Induk Siswa" rows="1" cols="30"></td>
+            </tr>
+            <tr>
+                <td>Nama Siswa</td>
+                <td>:<input type="text" size="25" name="onama" placeholder="Nama Lengkap SIswa" rows="1" cols="30"></td>
+            </tr>
+            <tr>
+                <td>Jenis Kelamin</td>
+                <td>: <select name="ojkelamin">
+                    <option value="1">Laki-laki</option>
+                    <option value="2">Perempuan</option></select></td>
+            </tr>
+            <tr>
+                <td>Agama</td>
+                <td>: <select name="oagama">
+                    <option value="1">Islam</option>
+                    <option value="2">Kristen</option>
+                    <option value="3">Katolik</option>
+                    <option value="4">Budha</option>
+                    <option value="5">Hindu</option></select></td>
+            </tr>
+           <tr>
+                 <td>Status</td>
+                <td>:<input type="radio" value="menikah" name="omenikah">Menikah</td>
+            </tr>
+            <tr>
+               <td>Jurusan</td> 
+               <td>: <select name="ojurusan">
+                <option value="1">Rekayasa Perangkat Lunak</option>
+                <option value="2">Multimedia</option>
+                <option value="3">Perekayasaan Perangkat Lunak dan Gim</option>
+                <option value="4">Desain Komunikasi Visual</option></select></td>
+            </tr>
+            <tr>
+                <td>Keterangan :</td>
+                <td><textarea name="oket" placeholder="Keterangan" rows="6" cols="30"></textarea></td>
+            </tr>
+        </table>
+    </form>
+    <script>
+        function tekan(){
+            var hnis = document.fform.nis.value;
+            var hnama = document.fform.nama.value;
+            var hjk = document.fform.jkelamin.value;
+            var hagm = document.fform.agama.value;
+            var hsts = document.fform.menikah.checked;
+            var hjur = document.fform.jurusan.value;
+            var hket = document.fform.ket.value;
+            document.fform.onis.value = hnis;
+            document.fform.onama.value = hnama;
+            document.fform.ojkelamin.value = hjk;
+            document.fform.oagama.value = hagm;
+            document.fform.omenikah.checked = hsts;
+            document.fform.ojurusan.value = hjur;
+            document.fform.oket.value = hket;
+        }
+    </script>
+</body>
+</html>
