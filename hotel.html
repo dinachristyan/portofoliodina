@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hotel Nyenyak Tidur</title>
+    </head>
+    <body bgcolor="CCCCCC">
+        <center>
+            <form name="fhotel">
+                <table width="60%" bgcolor="white">
+                    <tr>
+                        <td align="center" bgcolor="#1134A6" style="color:white;" colspan="6"><h3>Hotel Nyenyak Tidur</h3></td>
+                    </tr>
+                    <tr>
+                        <td>Nama Customer 
+                            <td>:<input type="text" name="nama" placeholder="Masukkan nama"></td>
+                            <td>
+                                Harga perhari
+                            <td>:<input type="text" name="perhari" placeholder="0"><br></td>
+                            </td>
+                            </td>
+                    </tr>
+                    <tr>
+                        <td>Pilihan Kamar
+                        <td>:<select name="kamar" onchange="pilihkamar()">
+                            <option value="">Pilih Kamar</option>
+                            <option value="1">Junior</option>
+                            <option value="2">Superior</option>
+                            <option value="3">Deluxe</option>
+                            </select></td><br>
+                        <td>
+                            Harga x hari
+                        <td>: <input type="text" name="xhari" placeholder="0"><br></td> 
+                        </td>
+                        </td>   
+                    </tr>
+                    <tr>
+                        <td>Lama Menginap
+                        <td>:<input type="text" name="menginap" size="1px" onchange="kalihari()">hari<br></td>
+                        <td>
+                            Diskon Pengunjung
+                        <td>:<input type="text" name="diskonp" placeholder="0"><br></td>
+                        </td>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Jumlah Pengunjung
+                        <td>:<input type="radio" value="1" name="jp" onchange="satu()">1 <br><input type="radio" value="2" name="jp" onchange="dua()">2</td>
+                        <td>
+                            Diskon Keanggotaan
+                        <td>: <input type="text" name="diskonk" placeholder="0"><br></td>
+                        </td>
+                        </td>
+                        </tr>
+                        <tr>
+                        <td>
+                            Keanggotaan
+                        <td>: <input type="checkbox" value="mb" name="member" onchange="anggota()">Member<br></td>
+                        <td>
+                        <b>Total Harga</b>
+                        <td>:<input type="text" name="total" placeholder="0"><br></td>
+                        </td>
+                        </td>
+                    </tr>
+                    </table>            
+                    </form>
+                    <br><br>
+                    <form>
+                        <table width="60%" bgcolor="white">
+                            <tr>
+                                <td align="center" bgcolor="#8B4513" style="color: white;" colspan="6"><h3></h3>Rules:</td>
+                            </tr>
+                            <tr>
+                                <td><b>Harga Kamar Per hari</b></td>
+                                <td><b>Diskon Pengunjung</b></td>
+                                <td><b>Diskon Keanggotaan</b></td>
+                            </tr>
+                            <tr>
+                                <td><li type="square">Junior 375k</li></td>
+                                <td><li type="circle">1 Pengunjung 0%</li></td>
+                                <td><li type="disc">Bukan member 0%</li></td>
+                            </tr>
+                            <tr>
+                                <td><li type="square">Superior 450k</li></td>
+                                <td><li type="circle">2 Pengunjung, 10% dari hasil Harga x Hari</li></td>
+                                <td><li type="disc">Member, 15% dari hasil Harga x Hari</li></td>
+                            </tr>
+                            <tr>
+                                <td><li type="disc">Deluxe 565k</li></td>
+                            </tr>
+                        </table>
+                    </form>
+                    </center>
+                <script>
+                    function pilihkamar(){
+                        var okamar=parseFloat(document.fhotel.kamar.value);
+                        var hph=0.0;
+                        if(okamar==1){
+                            hph=375000;
+                        }
+                        else if(okamar==2){
+                            hph=450000;
+                        }
+                        else if(okamar==3){
+                            hph=565000;
+                        }
+                        document.fhotel.perhari.value="Rp.+hph";
+                        document.fhotel.total.value="Rp.+hph";      
+                    }
+                    function kalihari(){
+                        var okalihari=parseFloat(document.fhotel.menginap.value);
+                        var okamar=parseFloat(document.fhotel.kamar.value);
+                        var hxh=0.0;
+                        var hph = 0.0;
+                        if(okamar==1){
+                            hph=375000;
+                        }
+                        else if(okamar==2){
+                            hph=450000;
+                        }
+                        else if(okamar==3){
+                            hph=565000;
+                        }
+                        document.fhotel.perhari.value=hph;
+                        hxh=hph*okalihari;
+                        document.fhotel.perhari.value="Rp."+hph;
+                        document.fhotel.xhari.value="Rp. "+hxh;
+                        document.fhotel.total.value="Rp. "+hxh;
+                    }
+                    function dua(){
+                        var okalihari=parseFloat(document.fhotel.menginap.value);
+                        var okamar=parseFloat(document.fhotel.kamar.value);
+                        var hxh=0.0;
+                        var hph = 0.0;
+                        var ototal=0.0;
+                        if(okamar==1){
+                            hph=375000;
+                        }
+                        else if(okamar==2){
+                            hph=450000;
+                        }
+                        else if(okamar==3){
+                            hph=565000;
+                        }
+                        document.fhotel.perhari.value="Rp "+hph;
+                        hxh=hph*okalihari;
+                        document.fhotel.xhari.value="Rp "+hxh;
+
+                        pdiskon=0.10*hxh;
+                        ototal=hxh-pdiskon
+                        if(document.fhotel.jp.chacked==true){
+                            pdiskon=0.10*hxh;
+                            ototal=hxh-pdiskon;
+                        }
+                    document.fhotel.diskonp.value="Rp "+pdiskon;
+                    document.fhotel.total.value="Rp "+ototal;
+                    }
+                    function anggota(){
+                        var okalihari=parseFloat(document.fhotel.menginap.value);
+                        var okamar=parseFloat(document.fhotel.kamar.value);
+                        var hxh=0.0;
+                        var hph = 0.0;
+                        var pdiskon=0.0;
+                        var kdiskon=0.0;
+                        var ototal=0.0;
+
+                        if(okamar==1){
+                            hph=375000;
+                        }
+                        else if(okamar==2){
+                            hph=450000;
+                        }
+                        else if(okamar==3){
+                            hph=565000;
+                        }
+                        document.fhotel.perhari.value="Rp "+hph;
+                        hxh=hph*okalihari;
+                        document.fhotel.xhari.value="Rp "+hxh;
+                        pdiskon=0.10*hxh;
+                        ototal=hxh-pdiskon
+                        if(document.fhotel.jp.chacked==true){
+                        pdiskon=0.10*hxh;
+                        ototal=hxh-pdiskon;
+                        }
+                        document.fhotel.diskonp.value="Rp "+pdiskon;
+                        document.fhotel.total.value="Rp "+ototal;
+                        kdiskon=0.15*hxh;
+                        ototal=hxh-pdiskon-kdiskon;
+                        if(document.fhotel.member.chacked==true){
+                            kdiskon=0.15*hxh;
+                            ototal=hxh-pdiskon-kdiskon;
+                        }
+                        document.fhotel.diskon.value="Rp "+kdiskon;
+                        document.fhotel.total.value="Rp "+ototal;
+                    }
+                </script>
+    </body>
+</html>
